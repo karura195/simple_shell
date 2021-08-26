@@ -1,0 +1,44 @@
+.TH simple_shell "25 August 2021" "V1.0" "simple_shell man page"
+.SH NAME				
+.B simple_shell - Simple Unix comand interpreter	
+simple_shell: the shell or command interpreter or command interpreter is the computer program 
+that provides a user interface to access the services of the operating system.
+
+.SH SYNOPSYS				
+.B #include \fB"shell.h"
+
+./hsh
+/bin/[command] [option]
+[command] [option]
+
+.SH DESCRIPTION
+simple_shell es un intérprete de línea de comandos, o shell, utilizando como idea principalel
+primer shell de Unix escrito por Ken Thompson. 
+Este shell es una version ligera, incluye la funcionalidad básica de una interfaz de línea de
+comandos tradicional similar a Unix.
+simple_shell fue diseñado para ser ejecutado en el entorno Linux.
+
+.SH EXAMPLES
+$  /bin/ls -l
+    -rwxr--r-- 1 root root   841 Aug 22 23:23 token_maker.c
+    -rwxr-xr-x 1 root root 17408 Aug 22 22:02 simple_shell
+    -rwxr--r-- 1 root root  2207 Aug 22 22:02 simple_shell.c
+    -rw-r--r-- 1 root root  1160 Aug 22 23:23 shell.h
+    -r--r--r-- 1 root root  1409 Aug 22 22:24 man_1_simple_shell
+
+$  ls -l
+    -rwxr--r-- 1 root root   841 Aug 22 23:23 token_maker.c
+    -rwxr-xr-x 1 root root 17408 Aug 22 22:02 simple_shell
+    -rwxr--r-- 1 root root  2207 Aug 22 22:02 simple_shell.c
+    -rw-r--r-- 1 root root  1160 Aug 22 23:23 shell.h
+    -r--r--r-- 1 root root  1409 Aug 22 22:24 man_1_simple_shell
+
+.SH AUTHOR'S				
+-Written by Karla Diaz <karla.diaz@pucp.pe> and Edgar Flores <edgarxot@gmail.com>
+
+.SH BUGS
+There were no errors in the testing time of this code (August 25, 2021).
+We would appreciate if you inform us of any problems encountered.
+
+.SH SEE ALSO
+sh
