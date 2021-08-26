@@ -2,78 +2,53 @@
 
 /**
  * main - initializes a simple shell
- * @ac: n° of arguments
- * @av: arguments
+ * @argc: n° of arguments
+ * @argv: arguments
+ * @envp: environment
  *
  * Return: 0
  */
 
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)))
+int main(int argc, char **argv, char **envp)
 {
-	char *input = NULL;
-	char *argv[120];
-	int argc;
-	size_t len = 0;
-	ssize_t read = 0;
-	char *token;
-	char *path = "/bin/";
-	char file_path[50];
+	char *line_buffer = NULL, *pathcmd = NULL, *path = NULL;
+	size_t buffer_size = 0;
+	ssize_t line = 0;
+	char **args = NULL, **paths = NULL;
+	(void) argc, (void) envp, (void) argv;
 
+	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
-		write(0, "$ ", 2);
-		read = getline(&input, &len, stdin);
-		if (read == -1)
+		free_args(args);
+		free_args(paths);
+		free(pathcmd);
+		init_shell();
+		line = getline(&line_buffer, &buffer_size, stdin);
+		if (line == -1)
 		{
 			if (feof(stdin))
-			{
 				exit(EXIT_SUCCESS);
-			}
-			else
-			{
-				perror("Error");
-				exit(EXIT_FAILURE);
-			}
+				else
+				{
+					exit(EXIT_FAILURE);
+				}
 		}
-		len = strlen(input);
-		if (input[len - 1] == '\n')
-		{
-			input[len - 1] = '\0';
-		}
-		if (strcmp(input, "exit") == 0)
-		{
-			break;
-		}
-		token = strtok(input, " ");
-		argc = 0;
-
-		if (token == NULL)
-		{
+		if (line_buffer[line - 1] == '\n')
+			line_buffer[line - 1]  = '\0';
+		args = token_maker(line_buffer);
+		if (args == NULL || *args == NULL || **args == '\0')
 			continue;
-		}
-		while (token != NULL)
-		{
-			argv[argc] = token;
-			token = strtok(NULL, " ");
-			argc++;
-		}
-		argv[argc] = NULL;
-		strcpy(file_path, path);
-		strcat(file_path, argv[0]);
-		if (access(argv[0], F_OK) == 0)
-		{
-			exe_path(argv);
-		}
-		else if (access(file_path, F_OK) == 0)
-		{
-			exe_command(file_path, argv);
-		}
+		if (check_type(args, line_buffer))
+			continue;
+		path = _getpath();
+		paths = token_maker(path);
+		pathcmd = ver_paths(paths, args[0]);
+		if (pathcmd == NULL)
+			perror(argv[0]);
 		else
-		{
-			perror("./hsh");
-		}
+			exec_cmd(pathcmd, args);
 	}
-	free(input);
-	free(token);
+	free(line_buffer);
 	return (0);
 }
