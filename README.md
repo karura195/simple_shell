@@ -1,18 +1,18 @@
-#Our own simple shell
+# Our own simple shell
 
 This is a simple shell we made for our final project in C
 
-###About
+### About
 
 The program recreates the basic functionality found in the traditional Unix shell.
 
-###Compilation
+### Compilation
 Our simple shell is compiled this way:
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
-###Examples
+### Examples
 ```
 $ /bin/pwd
 /home/vagrant/shell
@@ -51,6 +51,6 @@ $ hola
 ./hsh: No such file or directory
 ```
 
-###Authors
+### Authors
 [Karla Diaz](https://github.com/karura195)
 [Edgar Flores](https://github.com/zye7ert)
