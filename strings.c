@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _strlen - returns the length of a string
+ * _strlen - returns the length of a string.
  * @str: string to analyze
  * Return: i, length of s
  */
@@ -16,7 +16,7 @@ int _strlen(const char *str)
 }
 
 /**
- * _strdup - returns a pointer to a new string that duplicates the string s
+ * _strdup - returns a pointer to a new string that duplicates the string s.
  * @str: string to copy
  * Return: dest
  */
@@ -48,7 +48,7 @@ char *_strdup(char *str)
 }
 
 /**
- * _strchr - searches for a character in a string
+ * _strchr - searches for a character in a string.
  * @str: string
  * @c: character to search
  * Return: null
@@ -66,7 +66,7 @@ char *_strchr(char *str, int c)
 }
 
 /**
- * _strcmp - compares two strings
+ * _strcmp - compares two strings.
  * @s1: first string to compare
  * @s2: second string to compare
  * Return: the difference between the strings
@@ -92,7 +92,7 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * _strncmp - compares 2 strings up to n bytes
+ * _strncmp - compares 2 strings up to n bytes.
  * @first: first string to compare
  * @second: second string to compare
  * @n: position
