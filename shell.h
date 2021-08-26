@@ -11,14 +11,42 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <limits.h>
-#include <errno.h>
+#include <stdbool.h>
 
-void exe_path(char **argv);
-void exe_command(char *path, char **argv);
-int _strlen(char *s);
-char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
+extern __sighandler_t signal(int __sig, __sighandler_t __handler);
+extern char **environ;
+
+/**
+ * struct builtins - Handles builtins
+ * @env: First member
+ * @exit: Second member
+ *
+ * Description: builtin commands
+ */
+
+struct builtins
+{
+	char *env;
+	char *exit;
+
+} builtins;
+
+int _strlen(const char *str);
+char *_strchr(char *str, int c);
 int _strcmp(char *s1, char *s2);
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)));
+int _strncmp(const char *first, const char *second, int n);
+char *_strdup(char *str);
+void free_args(char **m);
+char **token_maker(char *str);
+void exec_cmd(char *command, char **args);
+void exiter(char **arr, char *line);
+void print_env(void);
+int is_builtin(char **command, char *line);
+char *pathcat(char *path, char *command);
+char *ver_paths(char **p, char *command);
+char *_getpath(void);
+int check_type(char **args, char *line);
+void init_shell(void);
+int main(int argc, char **argv, char **envp);
 
 #endif /* SHELL_H */
