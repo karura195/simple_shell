@@ -20,9 +20,6 @@ int main(int argc, char **argv, char **envp)
 	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
-		free_args(args);
-		free_args(paths);
-		free(pathcmd);
 		init_shell();
 		line = getline(&line_buffer, &buffer_size, stdin);
 		if (line == -1)
@@ -50,5 +47,8 @@ int main(int argc, char **argv, char **envp)
 			exec_cmd(pathcmd, args);
 	}
 	free(line_buffer);
+	free_args(args);
+	free_args(paths);
+	free(pathcmd);
 	return (0);
 }
