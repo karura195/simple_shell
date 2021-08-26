@@ -2,7 +2,7 @@
 .SH NAME				
 .B simple_shell - Simple Unix comand interpreter	
 simple_shell: the shell or command interpreter or command interpreter is the computer program 
-that provides a user interface to access the services of the operating system
+that provides a user interface to access the services of the operating system.
 
 .SH SYNOPSYS				
 .B #include \fB"shell.h"
