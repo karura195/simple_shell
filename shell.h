@@ -31,6 +31,18 @@ struct builtins
 
 } builtins;
 
+/**
+ * struct flags - Holds flags
+ * @interactive: First member
+ *
+ * Description: used to handle
+ * boolean switches
+ */
+struct flags
+{
+	bool interactive;
+} flags;
+
 int _strlen(const char *str);
 char *_strchr(char *str, int c);
 int _strcmp(char *s1, char *s2);
@@ -47,6 +59,8 @@ char *ver_paths(char **p, char *command);
 char *_getpath(void);
 int check_type(char **args, char *line);
 void init_shell(void);
+void checkD(char *buf, int len);
+void checkC(int c);
 int main(int argc, char **argv, char **envp);
 
 #endif /* SHELL_H */
