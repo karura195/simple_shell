@@ -21,11 +21,11 @@ void exec_cmd(char *command, char **args)
 	}
 	if (pid == 0)
 	{
-		execve(command, args, envp);
-		perror(command);
-		free(command);
-		free_args(args);
-		exit(98);
+		if (execve(command, args, envp) == -1)
+		{
+			perror(command);
+			exit(EXIT_FAILURE);
+		}
 	}
 	else
 	{

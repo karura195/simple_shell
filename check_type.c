@@ -10,14 +10,14 @@
 
 int check_type(char **args, char *line)
 {
-        if (is_builtin(args, line))
-        {
-                return (1);
-        }
-        else if (**args == '/')
-        {
-                exec_cmd(args[0], args);
-                return (1);
-        }
-        return (0);
+	if (is_builtin(args, line))
+	{
+		return (1);
+	}
+	else if (**args == '/')
+	{
+		exec_cmd(args[0], args);
+		return (1);
+	}
+	return (0);
 }

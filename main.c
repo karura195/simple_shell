@@ -17,25 +17,19 @@ int main(int argc, char **argv, char **envp)
 	char **args = NULL, **paths = NULL;
 	(void) argc, (void) envp, (void) argv;
 
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, checkC);
 	while (1)
 	{
+		free_args(args);
+		free_args(paths);
 		init_shell();
 		line = getline(&line_buffer, &buffer_size, stdin);
-		if (line == -1)
-		{
-			if (feof(stdin))
-				exit(EXIT_SUCCESS);
-				else
-				{
-					exit(EXIT_FAILURE);
-				}
-		}
+		checkD(line_buffer, line);
 		if (line_buffer[line - 1] == '\n')
 			line_buffer[line - 1]  = '\0';
 		args = token_maker(line_buffer);
 		if (args == NULL || *args == NULL || **args == '\0')
-			continue;
+			free_args(args);
 		if (check_type(args, line_buffer))
 			continue;
 		path = _getpath();
@@ -45,10 +39,11 @@ int main(int argc, char **argv, char **envp)
 			perror(argv[0]);
 		else
 			exec_cmd(pathcmd, args);
+		free(pathcmd);
 	}
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
 	free(line_buffer);
-	free_args(args);
-	free_args(paths);
-	free(pathcmd);
+	fflush(stdin);
 	return (0);
 }

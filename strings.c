@@ -8,11 +8,13 @@
 
 int _strlen(const char *str)
 {
-        size_t i = 0;
+	size_t i = 0;
 
-        while (str[i])
-                i++;
-        return (i);
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
 /**
@@ -23,28 +25,27 @@ int _strlen(const char *str)
 
 char *_strdup(char *str)
 {
-        char *p;
-        int i, len;
+	char *p;
+	int i, len;
 
-        if (str == NULL)
-        {
-                return (NULL);
-        }
+	if (str == NULL)
+	{
+		return (NULL);
+	}
 
-        len = _strlen(str);
+	len = _strlen(str);
 
-        p = malloc(sizeof(char) * (len + 1));
-        if (p == NULL)
-        {
-                return (NULL);
-        }
-        for (i = 0; *str != '\0'; str++, i++)
-        {
-                p[i] = str[0];
-        }
-        p[i++] = '\0';
-
-        return (p);
+	p = malloc(sizeof(char) * (len + 1));
+	if (p == NULL)
+	{
+		return (NULL);
+	}
+	for (i = 0; *str != '\0'; str++, i++)
+	{
+		p[i] = str[0];
+	}
+	p[i++] = '\0';
+	return (p);
 }
 
 /**
@@ -56,13 +57,15 @@ char *_strdup(char *str)
 
 char *_strchr(char *str, int c)
 {
-        while (*str)
-        {
-                if (*str == c)
-                        return (str);
-                str++;
-        }
-        return (NULL);
+	while (*str)
+	{
+		if (*str == c)
+		{
+			return (str);
+		}
+		str++;
+	}
+	return (NULL);
 }
 
 /**
@@ -74,21 +77,24 @@ char *_strchr(char *str, int c)
 
 int _strcmp(char *s1, char *s2)
 {
-        int cmp;
+	int cmp;
 
-        if (s1 == NULL || s2 == NULL)
-                return (0);
+	if (s1 == NULL || s2 == NULL)
+	{
+		return (0);
+	}
 
-        while (*s1 && *s2)
-        {
-                cmp = *s1 - *s2;
-
-                if (cmp != 0)
-                        break;
-                s1++;
-                s2++;
-        }
-        return (cmp);
+	while (*s1 && *s2)
+	{
+		cmp = *s1 - *s2;
+		if (cmp != 0)
+		{
+			break;
+		}
+		s1++;
+		s2++;
+	}
+	return (cmp);
 }
 
 /**
@@ -101,12 +107,14 @@ int _strcmp(char *s1, char *s2)
 
 int _strncmp(const char *first, const char *second, int n)
 {
-        int i;
+	int i;
 
-        for (i = 0; first[i] && second[i] && i < n; i++)
-        {
-                if (first[i] != second[i])
-                        return (first[i] - second[i]);
-        }
-        return (0);
+	for (i = 0; first[i] && second[i] && i < n; i++)
+	{
+		if (first[i] != second[i])
+		{
+			return (first[i] - second[i]);
+		}
+	}
+	return (0);
 }

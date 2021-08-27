@@ -10,7 +10,7 @@
 
 void exiter(char **arr, char *line)
 {
-        free(line);
-        free_args(arr);
-        exit(0);
+	free(line);
+	free_args(arr);
+	exit(0);
 }

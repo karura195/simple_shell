@@ -11,7 +11,7 @@
 
 int is_builtin(char **command, char *line)
 {
-	struct builtins builtins = { "env", "exit" };
+	struct builtins builtins = {"env", "exit"};
 
 	if (_strcmp(*command, builtins.env) == 0)
 	{
